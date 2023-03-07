@@ -8,13 +8,27 @@ Servo oscillator;
 #define CLOCK 5
 #define LATCH 4
 #define SERVO 9
+#define BUTTON 2
 
 //Servo
-#define point_zero 82
-#define max_angle 15
+#define point_zero 65
+#define max_angle 30
 const byte bottom_limit = point_zero - max_angle;
 const byte top_limit = point_zero + max_angle;
-#define angular_velocity 0.0005
+#define angular_velocity 0.002
 bool direction;
-double sin_angle = 1.57;
-double position = 1.0;
+double cos_angle = 1.57;
+double position = point_zero + 10;
+
+//Main
+ byte state = 0;
+ enum states{
+    ready,
+    running,
+    finished
+ };
+
+
+ //Timer
+ #define TIMEOUT 10000
+ unsigned long int start_mill = 0;
