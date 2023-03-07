@@ -11,11 +11,9 @@ void servoHandle(){
     oscillator.write(position);
 }
 
-bool checkZero(){
+/*bool checkZero(){
     if (position * 10 - (position * 10 - (int)(position * 10)) == point_zero * 10){
         return 1;
     }
-    else {
-        return 0;
-    }
-}
+    return 0;
+}*/

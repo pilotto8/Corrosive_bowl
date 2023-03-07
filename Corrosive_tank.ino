@@ -21,7 +21,7 @@ void setup(){
 void loop(){
     switch (state){
         case (ready):{
-            if (checkZero() == 0){
+            if (position * 10 - (position * 10 - (int)(position * 10)) != point_zero * 10){
                 if (position < 50 && direction == 0){
                     direction = 1;
                 }
@@ -39,7 +39,7 @@ void loop(){
         }
         case (running):{
             servoHandle();
-            if (checkZero() && millis() - start_mill >= TIMEOUT){
+            if (position * 10 - (position * 10 - (int)(position * 10)) == point_zero * 10 && millis() - start_mill >= TIMEOUT){
                 state = finished;
             }
             break;
