@@ -11,13 +11,23 @@ Servo oscillator;
 #define BUTTON 2
 
 //Servo
+#define FUNCTION 1
+
+#if FUNCTION == 0
+#define X_INF 0
+#define X_SUP 3.14
+#else if FUNCTION == 1
+#define X_INF -1
+#define X_SUP 1
+#endif
+
 #define point_zero 65
 #define max_angle 30
 const byte bottom_limit = point_zero - max_angle;
 const byte top_limit = point_zero + max_angle;
 #define angular_velocity 0.002
 bool direction;
-double cos_angle = 1.57;
+double x_pos = (X_SUP - X_INF) /2;
 double position = point_zero + 10;
 
 //Main
