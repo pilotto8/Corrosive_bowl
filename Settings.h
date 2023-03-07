@@ -31,14 +31,21 @@ double x_pos = (X_SUP - X_INF) /2;
 double position = point_zero + 10;
 
 //Main
- byte state = 0;
- enum states{
-    ready,
-    running,
-    finished
- };
+byte state = 0;
+enum states{
+   ready,
+   running,
+   finished
+};
 
 
- //Timer
- #define TIMEOUT 10000
- unsigned long int start_mill = 0;
+//Timer
+#define TIMEOUT 10000
+unsigned long int start_mill;
+byte previous_led;
+
+
+//Button
+bool button_state = 0;
+bool button_pulse = 0;
+unsigned long int button_mill;

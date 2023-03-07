@@ -19,9 +19,10 @@ void setup(){
 }
 
 void loop(){
+    checkButton();
     switch (state){
         case (ready):{
-            if (position * 10 - (position * 10 - (int)(position * 10)) != point_zero * 10){
+            if ((int)(position * 10) != point_zero * 10){
                 if (position < 50 && direction == 0){
                     direction = 1;
                 }
@@ -30,22 +31,22 @@ void loop(){
                 }
                 servoHandle();
             }
-            while (!digitalRead(BUTTON)){
+            if (buttonTrigg()){
                 start_mill = millis();
                 state = running;
-                Serial.println("Starting");
             }
             break;
         }
         case (running):{
             servoHandle();
-            if (position * 10 - (position * 10 - (int)(position * 10)) == point_zero * 10 && millis() - start_mill >= TIMEOUT){
+            showTime();
+            if ((int)(position * 10) == point_zero * 10 && millis() - start_mill >= TIMEOUT){
                 state = finished;
             }
             break;
         }
         case (finished):{
-            while (!digitalRead(BUTTON)){
+            if (buttonTrigg()){
                 state = ready;
             }
             break;
