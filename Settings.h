@@ -11,7 +11,7 @@ Servo oscillator;
 #define BUTTON 2
 
 //Servo
-#define FUNCTION 1
+#define FUNCTION 0
 
 #if FUNCTION == 0
 #define X_INF 0
@@ -43,6 +43,7 @@ enum states{
 #define TIMEOUT 10000
 unsigned long int start_mill;
 byte previous_led;
+unsigned long int previous_mill;
 
 
 //Button

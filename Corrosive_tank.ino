@@ -23,10 +23,10 @@ void loop(){
     switch (state){
         case (ready):{
             if ((int)(position * 10) != point_zero * 10){
-                if (position < 50 && direction == 0){
+                if (position < point_zero && direction == 0){
                     direction = 1;
                 }
-                else if (position > 50 && direction == 1){
+                else if (position > point_zero && direction == 1){
                     direction = 0;
                 }
                 servoHandle();

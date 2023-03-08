@@ -6,7 +6,7 @@ void showTime(){
             if (7 - i <= previous_led){
                 bit_sequence++;
             }
-            bit_sequnce <<= 1;
+            bit_sequence <<= 1;
         }
         uploadLeds(bit_sequence);
     }
