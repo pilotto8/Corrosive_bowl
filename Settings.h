@@ -22,10 +22,10 @@ Servo oscillator;
 #endif
 
 #define point_zero 65
-#define max_angle 30
+#define max_angle 7
 const byte bottom_limit = point_zero - max_angle;
 const byte top_limit = point_zero + max_angle;
-#define angular_velocity 0.002
+#define angular_velocity 0.007
 bool direction;
 double x_pos = (X_SUP - X_INF) /2;
 double position = point_zero + 10;
@@ -40,7 +40,7 @@ enum states{
 
 
 //Timer
-#define TIMEOUT 10000
+#define TIMEOUT 600000
 unsigned long int start_mill;
 byte previous_led;
 unsigned long int previous_mill;
