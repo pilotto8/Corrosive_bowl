@@ -40,8 +40,13 @@ void loop(){
         case (running):{
             servoHandle();
             showTime();
-            if ((int)(position * 10) == point_zero * 10 && (millis() - start_mill >= TIMEOUT || buttonTrigg())){
-                state = finished;
+            if ((int)(position * 10) == point_zero * 10){
+                if (millis() - start_mill >= TIMEOUT){
+                    state = finished;
+                }
+                else if (buttonTrigg()){
+                    state = ready;
+                }
             }
             break;
         }
