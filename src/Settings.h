@@ -3,12 +3,13 @@ Servo oscillator;
 #define LED_INTENSITY 200
 
 //PIN
-#define LED_PWM 2
 #define DATA 6
 #define CLOCK 5
 #define LATCH 4
 #define SERVO 9
 #define BUTTON 2
+#define BUZZ 3
+#define OE 10
 
 //Servo
 #define FUNCTION 0
@@ -50,3 +51,6 @@ unsigned long int previous_mill;
 bool button_state = 0;
 bool button_pulse = 0;
 unsigned long int button_mill;
+
+//Buzzer
+unsigned long int alarm_mill;

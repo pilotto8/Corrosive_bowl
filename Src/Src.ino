@@ -5,14 +5,13 @@ void setup(){
     pinMode(DATA,OUTPUT);
     pinMode(CLOCK,OUTPUT);
     pinMode(LATCH,OUTPUT);
-    pinMode(LED_PWM,OUTPUT);
-    pinMode(BUTTON,INPUT_PULLUP);
-    analogWrite(LATCH, LED_INTENSITY);
+    pinMode(BUTTON,INPUT);
+    pinMode(BUZZ, OUTPUT);
     oscillator.attach(SERVO);
-    //oscillator.write(point_zero);
+    oscillator.write(point_zero);
 
     digitalWrite(LATCH, LOW);
-    shiftOut(DATA, CLOCK, MSBFIRST, 1);
+    shiftOut(DATA, CLOCK, MSBFIRST, B11000011);
     digitalWrite(LATCH, HIGH);
 
     Serial.begin(115200);
@@ -44,15 +43,20 @@ void loop(){
                 if (millis() - start_mill >= TIMEOUT){
                     state = finished;
                 }
-                else if (buttonTrigg()){
-                    state = ready;
-                }
+            }
+            if (buttonTrigg()){
+                 state = ready;
+                 while((int)(position * 10) != point_zero * 10){servoHandle();}
             }
             break;
         }
         case (finished):{
             if (buttonTrigg()){
                 state = ready;
+            }
+            else if (millis() - alarm_mill > 2000){
+              alarm();
+              alarm_mill = millis();
             }
             break;
         }

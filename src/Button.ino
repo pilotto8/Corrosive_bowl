@@ -1,5 +1,5 @@
 void checkButton(){
-    if (!digitalRead(BUTTON)){
+    if (digitalRead(BUTTON)){
         if (millis() - button_mill >= 20){
             if (!button_state){
                 button_state = 1;
