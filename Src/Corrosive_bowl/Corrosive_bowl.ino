@@ -10,9 +10,10 @@ void setup(){
     oscillator.attach(SERVO);
     oscillator.write(point_zero);
 
-    digitalWrite(LATCH, LOW);
+    /*digitalWrite(LATCH, LOW);
     shiftOut(DATA, CLOCK, MSBFIRST, B11000011);
-    digitalWrite(LATCH, HIGH);
+    digitalWrite(LATCH, HIGH);*/
+    uploadLeds(B00000000);
 
     Serial.begin(115200);
 }
@@ -33,6 +34,7 @@ void loop(){
             if (buttonTrigg()){
                 start_mill = millis();
                 state = running;
+                uploadLeds(B11111111);
             }
             break;
         }
@@ -45,13 +47,27 @@ void loop(){
                 }
             }
             if (buttonTrigg()){
-                 state = ready;
-                 while((int)(position * 10) != point_zero * 10){servoHandle();}
+                while((int)(position * 10) != point_zero * 10){servoHandle();}
+                paused_mill = millis();
+                state = paused;
+            }
+            break;
+        }
+        case (paused):{
+            if (buttonTrigg()){
+                start_mill += millis() - paused_mill;
+                state = running;
+            }
+            else if (millis() - button_mill >= 500){
+                uploadLeds(B00000000);
+                alarm();
+                state = ready;
             }
             break;
         }
         case (finished):{
             if (buttonTrigg()){
+                uploadLeds(B00000000);
                 state = ready;
             }
             else if (millis() - alarm_mill > 2000){

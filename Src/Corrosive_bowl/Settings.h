@@ -36,15 +36,17 @@ byte state = 0;
 enum states{
    ready,
    running,
+   paused,
    finished
 };
 
 
 //Timer
-#define TIMEOUT 600000
+#define TIMEOUT 5000/*600000*/
 unsigned long int start_mill;
 byte previous_led;
 unsigned long int previous_mill;
+unsigned long int paused_mill;
 
 
 //Button

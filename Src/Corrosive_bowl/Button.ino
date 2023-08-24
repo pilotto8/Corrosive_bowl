@@ -1,6 +1,6 @@
 void checkButton(){
     if (digitalRead(BUTTON)){
-        if (millis() - button_mill >= 20){
+        if (millis() - button_mill >= 50){
             if (!button_state){
                 button_state = 1;
                 button_pulse = 1;
