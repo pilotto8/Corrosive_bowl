@@ -22,7 +22,7 @@ Servo oscillator;
 #define X_SUP 1
 #endif
 
-#define point_zero 65
+#define point_zero 63
 #define max_angle 7
 const byte bottom_limit = point_zero - max_angle;
 const byte top_limit = point_zero + max_angle;
