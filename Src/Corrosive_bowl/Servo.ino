@@ -24,9 +24,3 @@ double function(){
         return sqrt(x_pos);
     #endif
 }
-/*bool checkZero(){
-    if (position * 10 - (position * 10 - (int)(position * 10)) == point_zero * 10){
-        return 1;
-    }
-    return 0;
-}*/

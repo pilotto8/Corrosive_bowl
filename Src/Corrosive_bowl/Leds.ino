@@ -17,3 +17,16 @@ void uploadLeds(byte bit_sequence){
     shiftOut(DATA, CLOCK, LSBFIRST, bit_sequence);
     digitalWrite(LATCH, HIGH);
 }
+
+void waveLeds(){
+    byte bit_sequence = B10000000;
+    for (byte i = 0; i < 8; i++, bit_sequence >>= 1){
+        uploadLeds(bit_sequence);
+        delay(30);
+    }
+    bit_sequence = B00000001;
+    for (byte i = 0; i < 9; i++, bit_sequence <<= 1){
+        uploadLeds(bit_sequence);
+        delay(30);
+    }
+}

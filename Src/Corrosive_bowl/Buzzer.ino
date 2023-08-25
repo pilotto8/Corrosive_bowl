@@ -1,3 +1,3 @@
 void alarm(){
-  tone(BUZZ, 440, 100);
+  tone(BUZZ, 740, 70);
 }

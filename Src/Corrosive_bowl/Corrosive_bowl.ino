@@ -9,11 +9,8 @@ void setup(){
     pinMode(BUZZ, OUTPUT);
     oscillator.attach(SERVO);
     oscillator.write(point_zero);
-
-    /*digitalWrite(LATCH, LOW);
-    shiftOut(DATA, CLOCK, MSBFIRST, B11000011);
-    digitalWrite(LATCH, HIGH);*/
-    uploadLeds(B00000000);
+    
+    waveLeds();
 
     Serial.begin(115200);
 }
@@ -71,8 +68,14 @@ void loop(){
                 state = ready;
             }
             else if (millis() - alarm_mill > 2000){
-              alarm();
-              alarm_mill = millis();
+                alarm();
+                alarm_mill = millis();
+                uploadLeds(B00000000);
+                previous_led = B00000000;
+            }
+            else if (millis() - alarm_mill > 1000 && previous_led == 0){
+                uploadLeds(B11111111);
+                previous_led = B11111111;
             }
             break;
         }
