@@ -15,21 +15,21 @@ Servo oscillator;
 #define FUNCTION 0
 
 #if FUNCTION == 0
-#define X_INF 0
+#define X_INF 0.0
 #define X_SUP 3.14
-#else if FUNCTION == 1
-#define X_INF -1
-#define X_SUP 1
+#else if (FUNCTION == 1 || FUNCTION == 2)
+#define X_INF -1.0
+#define X_SUP 1.0
 #endif
 
-#define point_zero 63
-#define max_angle 7
-const byte bottom_limit = point_zero - max_angle;
-const byte top_limit = point_zero + max_angle;
-#define angular_velocity 0.007
+#define point_zero 6
+#define max_angle 9
+const int bottom_limit = point_zero - max_angle;
+const int top_limit = point_zero + max_angle;
+#define angular_velocity 0.008
 bool direction;
-double x_pos = (X_SUP - X_INF) /2;
-double position = point_zero + 10;
+double x_pos = (X_SUP - X_INF) / 2.0;
+double position = point_zero + 10.0;
 
 //Main
 byte state = 0;
